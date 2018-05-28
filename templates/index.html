@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}<title>遊戲資訊系統</title>{% endblock %}
+{% block content %}
+
+<div class="table-responsive">
+    <table border="3" cellpadding="2" cellspacing="2" class="table">
+        <th>標題</th>
+        <th>作者</th>
+        <th>連結網址</th>
+        {% for un in unit %}
+        <tr>
+            <td><a href="/detail/{{un.id}}">{{un.cTitle}}</a></td>
+            <td>{% autoescape off %}{{un.cAuthor}}{% endautoescape %}</td>
+            <td><a href="{{un.cLink}}">巴哈姆特討論串</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
