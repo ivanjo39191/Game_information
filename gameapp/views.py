@@ -51,7 +51,6 @@ def index(request):
 
 
 def login(request):
-    ref = True
     timg2 = timg1
     if request.session.get('is_login',None): #檢查session確定是否登入，不允許重複登入
         return redirect("/index/")  #若已登入則導向主頁

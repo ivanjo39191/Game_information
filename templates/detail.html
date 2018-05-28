@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% block title %}
+<title>遊戲資訊文章頁面</title>
+<!-- 讓瀏覽器不帶refer訊息，繞過顯示爬蟲圖片網址的refer的檢測 -->
+<meta name="referrer" content="never">
+{% endblock %}
 {% block content %}
 <div align="center">
     <a href="/index/" class="btn btn-info" role="button">返回主頁</a>
