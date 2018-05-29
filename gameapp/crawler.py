@@ -1,5 +1,5 @@
 from gameapp.models import gamee, User
-from . import models
+from game import models
 import html  # html轉譯
 from apscheduler.schedulers.blocking import BlockingScheduler  # 定期執行
 
