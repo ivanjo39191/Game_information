@@ -1,2 +1,2 @@
 web: gunicorn game.wsgi
-clock: python gameapp.crawler.py
+clock: python crawler1.py
