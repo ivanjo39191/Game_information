@@ -27,7 +27,7 @@ from django.conf import settings
 django.setup()
 from gameapp.models import gamee, User
 
-@sched.scheduled_job('interval', seconds=60)
+@sched.scheduled_job('interval', seconds=180)
 def crawler2():  # 爬蟲程式
     global titles, links, at, ct, t, l
     url = 'https://forum.gamer.com.tw/B.php?bsn=31406'  # 選擇網址
