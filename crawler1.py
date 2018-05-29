@@ -59,7 +59,7 @@ def crawler2():  # 爬蟲程式
         print(t, l)
         content(l)  # 使用爬蟲出來的網址進行文章內容的爬蟲
         sql()  # 將爬出的內容進行與資料庫的連接
-    return redirect('/index/')
+
 
 
 def content(aa):
