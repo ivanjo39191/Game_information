@@ -4,7 +4,7 @@ sched = BlockingScheduler()
 
 @sched.scheduled_job('interval', minutes=3)
 
-
+def cr():
     print('do crawler')
     os.system("python crawler1.py")
 
