@@ -1,2 +1,2 @@
 web: gunicorn game.wsgi
-clock: python clock
+clock: python app/game/clock.py
