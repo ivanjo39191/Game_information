@@ -1,8 +1,8 @@
 from .settings import *
 
-import dj_datebase_url
+import dj_database_url
 DATABASES = {
-    'default': dj_datebase_url.config()
+    'default': dj_database_url.config()
 }
 STATIC_ROOT = 'staticfiles'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
