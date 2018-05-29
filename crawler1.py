@@ -84,6 +84,11 @@ def sql():
             print('已有重複資料')
 
     except:
-        unit = gamee.objects.create(cAuthor=cAuthor, cContent=cContent, cTitle=cTitle, cLink=cLink)
-        unit.save()  # 寫入資料庫
-        print('成功儲存一筆資料')
+        try:
+            unit = gamee.objects.create(cAuthor=cAuthor, cContent=cContent, cTitle=cTitle, cLink=cLink)
+            unit.save()  # 寫入資料庫
+            print('成功儲存一筆資料')
+        except:
+            print('儲存資料失敗')
+
+crawler2()
