@@ -19,7 +19,7 @@ import html #html轉譯
 
 #外部調用django models
 import django
-import os
+import sys, os
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "game.settings")
 
@@ -27,7 +27,7 @@ from django.conf import settings
 django.setup()
 from gameapp.models import gamee, User
 
-
+@sched.scheduled_job('interval', seconds=60)
 def crawler2():  # 爬蟲程式
     global titles, links, at, ct, t, l
     url = 'https://forum.gamer.com.tw/B.php?bsn=31406'  # 選擇網址
@@ -98,8 +98,4 @@ def sql():
         unit.save()  # 寫入資料庫
         print('成功儲存一筆資料')
 
-
-@sched.scheduled_job('interval', seconds=60)
-def cr():
-    crawler2()
 sched.start()
