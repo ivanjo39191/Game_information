@@ -6,7 +6,6 @@ from gameapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('crawler/',views.crawler),
     path('',views.index),
     path('index/',views.index),
     path('login/',views.login),
