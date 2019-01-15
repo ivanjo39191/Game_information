@@ -72,6 +72,7 @@ def index(request):
     context = {}
     context['units'] = page_of_units.object_list
     context['page_of_units'] = page_of_units
+    context['page_range'] = page_range
     context['timg2'] = timg2
     return render(request,"index.html",context)
 
