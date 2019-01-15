@@ -51,7 +51,7 @@ def index(request):
     page_num = request.GET.get('page', 1) #獲取url的頁面參數 (GET請求)
     page_of_units = paginator.get_page(page_num) #get_page會自動識別頁碼，若無效則返回1，超出頁數則顯示最後一頁
     context = {}
-    context['units'] = page_of_units.objects_list
+    context['units'] = page_of_units.object_list
     context['page_of_units'] = page_of_units
     return render(request,"index.html",context)
 
