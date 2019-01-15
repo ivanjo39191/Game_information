@@ -8,7 +8,7 @@
         <th>標題</th>
         <th>作者</th>
         <th>連結網址</th>
-        {% for un in unit %}
+        {% for un in units %}
         <tr>
             <td><a href="/detail/{{un.id}}">{{un.cTitle}}</a></td>
             <td>{% autoescape off %}{{un.cAuthor}}{% endautoescape %}</td>

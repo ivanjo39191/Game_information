@@ -6,6 +6,7 @@ from django import forms
 from gameapp.forms import UserForm,RegisterForm
 import hashlib #密碼加密
 import html #html轉譯
+from django.core.paginator import Paginator
 
 
 import requests
@@ -46,7 +47,13 @@ def index(request):
 
     timg2 = timg1 #將主圖片爬蟲轉為區域變數才能傳遞
     unit = gamee.objects.all().order_by( '-id' ) 
-    return render(request,"index.html",locals())
+    paginator = Paginator(unit, 5) #每5篇進行分頁
+    page_num = request.GET.get('page', 1) #獲取url的頁面參數 (GET請求)
+    page_of_units = paginator.get_page(page_num) #get_page會自動識別頁碼，若無效則返回1，超出頁數則顯示最後一頁
+    context = {}
+    context['units'] = page_of_units.objects_list
+    context['page_of_units'] = page_of_units
+    return render(request,"index.html",context)
 
 
 
