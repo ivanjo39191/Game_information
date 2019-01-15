@@ -47,12 +47,32 @@ def index(request):
 
     timg2 = timg1 #將主圖片爬蟲轉為區域變數才能傳遞
     unit = gamee.objects.all().order_by( '-id' ) 
-    paginator = Paginator(unit, 5) #每5篇進行分頁
+    paginator = Paginator(unit, 20) #每5篇進行分頁
     page_num = request.GET.get('page', 1) #獲取url的頁面參數 (GET請求)
     page_of_units = paginator.get_page(page_num) #get_page會自動識別頁碼，若無效則返回1，超出頁數則顯示最後一頁
+    current_page_num = page_of_units.number
+    #當前頁碼的資料
+    currnt_good_list = page_of_units.object_list
+    #頁碼範圍
+    page_range = list(range(max(1,current_page_num-2),current_page_num)) +\
+                 list(range(current_page_num,min(paginator.num_pages,current_page_num+2)+1))
+    #加入省略符號
+    if page_range[0] -1 >= 2:
+        page_range.insert(0, '...')
+    if page_range[-1] + 2 <= paginator.num_pages:
+        page_range.append('...')
+    #加入首頁末頁
+    if page_range[0] != 1:
+        page_range.insert(0,1)
+    if page_range[-1] != paginator.num_pages:
+        page_range.append(paginator.num_pages)
+
+
+
     context = {}
     context['units'] = page_of_units.object_list
     context['page_of_units'] = page_of_units
+    context['timg2'] = timg2
     return render(request,"index.html",context)
 
 
